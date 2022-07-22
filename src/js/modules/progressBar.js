@@ -1,4 +1,4 @@
-function progressBar(taskObj) {
+function progressBar(taskObj, selectorProgressBar) {
   const initProgressEl = (color, percentage) => {
     return `<div class="progress-bar bg-gradient ${color}" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100" style="width: ${percentage}%;"></div>`;
   };
@@ -26,20 +26,20 @@ function progressBar(taskObj) {
   };
 
   const initProgressBar = (taskObj) => {
-    setDataEl(sel.progressBar, '', true);
+    setDataEl(selectorProgressBar, '', true);
     let clone = JSON.parse(JSON.stringify(taskObj));
     clone.sort((a, b) => (a['taskProgress'] > b['taskProgress'] ? 1 : -1));
     Object.keys(clone).forEach((key) => {
       if (clone[key].taskProgress) {
-        sel.getElbySeclector('progressBar').innerHTML += initProgressEl(
+        document.querySelector(selectorProgressBar).innerHTML += initProgressEl(
           clone[key].taskColor,
           percentageOfTime(clone, clone[key].taskId)
         );
       }
-    }); 
+    });
   };
 
-  initProgressBar(taskObj.current);
+  initProgressBar(taskObj);
 }
 
 export default progressBar;
