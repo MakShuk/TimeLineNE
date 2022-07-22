@@ -1,0 +1,44 @@
+// *{
+//   box-sizing: border-box;
+//   outline: 1px solid lawngreen !important;
+// }
+
+.row {
+  align-items: center;
+}
+
+body, footer {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.progress{
+ min-height: 50px;
+}
+.m_progressIndicator {
+    position: static;
+    display: block;
+    z-index: 99999999;
+    font-size: 18px;
+    margin-left: -0.5%;
+    color:#c81515bd;
+    text-align: left;
+    height: 20px;
+  }
+
+.about {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.5em;
+    font-family: 'MuseoModerno', cursive;
+    a {
+        text-decoration: none;
+        color: #76d1e9;
+        font-weight: bold;
+    }
+}
+
+.task {
+border-bottom: 4px solid;
+border-color: #ffffff;
+}
