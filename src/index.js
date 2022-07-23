@@ -4,9 +4,10 @@ import './sass/main.scss';
 
 import progressBar from './js/modules/progressBar';
 
-progressBar(tasks, sel.progressBar)
 
-
+ const doId = () => {
+   return Math.random().toString(36).substring(2, 16);
+ };
 
  let tasks = {
    // LINK task
@@ -89,3 +90,6 @@ progressBar(tasks, sel.progressBar)
      if (oneOrAll == 'all') return document.querySelectorAll(this[key]);
    },
  };
+
+
+ progressBar(tasks, sel.progressBar);
