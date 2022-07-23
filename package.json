@@ -8,8 +8,12 @@
   },
   "author": "",
   "license": "ISC",
+  "btowserslist": [
+    " > 1%"
+  ],
   "dependencies": {
     "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
     "bootstrap": "^5.2.0",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
@@ -20,6 +24,10 @@
     "webpack-cli": "^4.10.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.18.9",
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "core-js": "^3.23.5",
     "postcss": "^8.4.14",
     "postcss-loader": "^7.0.1",
     "webpack-dev-server": "^4.9.3"
