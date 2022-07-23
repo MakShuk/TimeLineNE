@@ -11,15 +11,15 @@ function progressBar(taskObj, selectorProgressBar) {
     replacement ? (el.innerHTML = data) : (el.innerHTML += data);
   };
 
-  const percentageOfTime = (taskObj, id) => {
+  const percentageOfTime = (cloneTaskObj, id) => {
     let fullTime = 0;
     let taskTime = 0;
-    Object.keys().forEach((key) => {
-      if (taskObj[key].taskProgress) {
-        fullTime += taskObj[key].taskTime;
+    cloneTaskObj.current.forEach((e) => {
+      if (e.taskProgress) {
+        fullTime += e.taskTime;
       }
-      if (taskObj[key].taskId === id) {
-        taskTime = taskObj[key].taskTime;
+      if (e.taskId === id) {
+        taskTime = e.taskTime;
       }
     });
     return Math.round((taskTime / fullTime) * 100);
@@ -27,13 +27,17 @@ function progressBar(taskObj, selectorProgressBar) {
 
   const initProgressBar = (taskObj) => {
     setDataEl(selectorProgressBar, '', true);
-    let clone = JSON.parse(JSON.stringify(taskObj));
-    clone.sort((a, b) => (a['taskProgress'] > b['taskProgress'] ? 1 : -1));
-    Object.keys(clone).forEach((key) => {
-      if (clone[key].taskProgress) {
+    let cloneTaskObj = JSON.parse(JSON.stringify(taskObj));
+    cloneTaskObj.current.sort((a, b) =>
+      a['taskProgress'] > b['taskProgress'] ? 1 : -1
+    );
+    cloneTaskObj.current.forEach((e) => {
+      if (e.taskProgress) {
+        console.log(e.taskProgress);
+        console.log(percentageOfTime(cloneTaskObj, e.taskId));
         document.querySelector(selectorProgressBar).innerHTML += initProgressEl(
-          clone[key].taskColor,
-          percentageOfTime(clone, clone[key].taskId)
+          e.taskColor,
+          percentageOfTime(cloneTaskObj, e.taskId)
         );
       }
     });

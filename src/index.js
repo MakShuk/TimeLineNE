@@ -10,7 +10,6 @@ import progressBar from './js/modules/progressBar';
  };
 
  let tasks = {
-   // LINK task
    lastNumber: 4,
    current: [
      {
@@ -19,7 +18,7 @@ import progressBar from './js/modules/progressBar';
        taskState: 'current',
        taskColor: 'bg-warning',
        taskTime: 1,
-       taskProgress: false,
+       taskProgress: true,
      },
      {
        taskId: doId(),
@@ -43,7 +42,7 @@ import progressBar from './js/modules/progressBar';
        taskState: 'current',
        taskColor: 'bg-dark',
        taskTime: 3,
-       taskProgress: false,
+       taskProgress: true,
      },
    ],
    done: [
