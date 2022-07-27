@@ -77,6 +77,7 @@ let sel = {
   colorList: '.m_colorList',
   timeChoice: '.m_timуСhoice',
   btnModalAddTask: '.m_btnModalAddTask',
+  taskListButton:'.m_taskListButton ',
   getElbySeclector(key, oneOrAll = 'one') {
     if (oneOrAll == 'one') return document.querySelector(this[key]);
     if (oneOrAll == 'all') return document.querySelectorAll(this[key]);
