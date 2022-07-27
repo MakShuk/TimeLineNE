@@ -3,6 +3,7 @@ import 'bootstrap';
 import './sass/main.scss';
 
 import progressBar from './js/modules/progressBar';
+import taskList from './js/modules/taksList';
 
 
  const doId = () => {
@@ -90,5 +91,5 @@ import progressBar from './js/modules/progressBar';
    },
  };
 
-
+ taskList(tasks, sel.taskList)
  progressBar(tasks, sel.progressBar);
