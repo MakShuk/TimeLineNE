@@ -1,15 +1,14 @@
-function taskListButtonAction(tasksObj, buttonsSelector) {
-
-
-
+function taskListButtonAction(tasksObj, buttonsSelector, fnProgressBar,) {
   let buttons = document.querySelectorAll(buttonsSelector);
   buttons.forEach((button) => {
     button.addEventListener('click', (el) => {
-      tasksObj.current.forEach((taskEl) => {
-        if(taskEl.taskId === el.target.id) {
-         console.log('Add');
+      tasksObj.current.forEach((taskEl, index) => {
+        if (taskEl.taskId === el.target.id) {
+          tasksObj.setTaskProgress(index);
+          fnProgressBar();
+         button.innerHTML = `${taskEl.taskProgress ? '+' : '-'}`;
         }
-      })
+      });
     });
   });
 }

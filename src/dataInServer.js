@@ -67,9 +67,14 @@ let tasks = {
     this.lastNumber++;
     return this.lastNumber;
   },
+  setTaskProgress(index) {
+    this.current[index].taskProgress = !this.current[index].taskProgress;
+    console.log(this.current);
+  },
+
 };
 
-let sel = {
+const sel = {
   sectionTimeLine: '.m_timeLine',
   progressIndicator: '.m_progressIndicator',
   progressBar: '.m_progressBar',

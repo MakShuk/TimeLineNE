@@ -14,4 +14,4 @@ import taskListButtonAction from './js/modules/taskListButtonAction';
 
  taskList(tasks, sel.taskList);
  progressBar(tasks, sel.progressBar);
- taskListButtonAction(tasks, sel.taskListButton);
+ taskListButtonAction(tasks, sel.taskListButton, ()=>{ progressBar(tasks, sel.progressBar);});
