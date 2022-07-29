@@ -4,7 +4,7 @@ function taskList(taskObj, selectorTaskList) {
              <div class="col-8 text-center">${taskContent}</div>
             <div class="col-2">action</div>
             <button id="${taskId}" type="button" class="m_taskListButton col-2 btn text-white ${taskColor}">${
-      taskProgress ? '+' : '-'
+      taskProgress ? '-' : '+'
     }</button>
           </div>`;
   };

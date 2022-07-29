@@ -6,7 +6,7 @@ function taskListButtonAction(tasksObj, buttonsSelector, fnProgressBar,) {
         if (taskEl.taskId === el.target.id) {
           tasksObj.setTaskProgress(index);
           fnProgressBar();
-         button.innerHTML = `${taskEl.taskProgress ? '+' : '-'}`;
+         button.innerHTML = `${taskEl.taskProgress ? '-' : '+'}`;
         }
       });
     });

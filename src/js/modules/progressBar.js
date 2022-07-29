@@ -29,9 +29,8 @@ function progressBar(taskObj, selectorProgressBar) {
     setDataEl(selectorProgressBar, '', true);
     let cloneTaskObj = JSON.parse(JSON.stringify(taskObj));
     cloneTaskObj.current.sort((a, b) =>
-      a['taskProgress'] > b['taskProgress'] ? 1 : -1
+      a['taskTime'] > b['taskTime'] ? 1 : -1
     );
-    console.log(cloneTaskObj);
     cloneTaskObj.current.forEach((e) => {
       if (e.taskProgress) {
         document.querySelector(selectorProgressBar).innerHTML += initProgressEl(

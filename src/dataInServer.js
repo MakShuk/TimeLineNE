@@ -66,7 +66,6 @@ let tasks = {
   setTaskProgress(index) {
     this.current[index].taskProgress = !this.current[index].taskProgress;
     this.current[index].taskTime = this.lastNumber
-    console.log(this.current[index].taskTime);
     this.lastNumber++
   },
 
