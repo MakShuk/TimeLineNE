@@ -31,10 +31,9 @@ function progressBar(taskObj, selectorProgressBar) {
     cloneTaskObj.current.sort((a, b) =>
       a['taskProgress'] > b['taskProgress'] ? 1 : -1
     );
+    console.log(cloneTaskObj);
     cloneTaskObj.current.forEach((e) => {
       if (e.taskProgress) {
-        console.log(e.taskProgress);
-        console.log(percentageOfTime(cloneTaskObj, e.taskId));
         document.querySelector(selectorProgressBar).innerHTML += initProgressEl(
           e.taskColor,
           percentageOfTime(cloneTaskObj, e.taskId)

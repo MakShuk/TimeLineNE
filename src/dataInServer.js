@@ -3,7 +3,7 @@ const doId = () => {
 };
 
 let tasks = {
-  lastNumber: 4,
+  lastNumber: 5,
   current: [
     {
       taskId: doId(),
@@ -18,7 +18,7 @@ let tasks = {
       taskContent: 'Таск 2',
       taskState: 'current',
       taskColor: 'bg-info',
-      taskTime: 6,
+      taskTime: 2,
       taskProgress: false,
     },
     {
@@ -26,7 +26,7 @@ let tasks = {
       taskContent: 'Таск 3',
       taskState: 'current',
       taskColor: 'bg-success',
-      taskTime: 8,
+      taskTime: 3,
       taskProgress: false,
     },
     {
@@ -34,8 +34,8 @@ let tasks = {
       taskContent: 'Таск 4',
       taskState: 'current',
       taskColor: 'bg-dark',
-      taskTime: 3,
-      taskProgress: true,
+      taskTime: 4,
+      taskProgress: false,
     },
   ],
   done: [
@@ -63,13 +63,11 @@ let tasks = {
       }
     });
   },
-  addTaskProgressNumber() {
-    this.lastNumber++;
-    return this.lastNumber;
-  },
   setTaskProgress(index) {
     this.current[index].taskProgress = !this.current[index].taskProgress;
-    console.log(this.current);
+    this.current[index].taskTime = this.lastNumber
+    console.log(this.current[index].taskTime);
+    this.lastNumber++
   },
 
 };
