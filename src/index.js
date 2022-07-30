@@ -7,6 +7,7 @@ import taskList from './js/modules/taskList';
 import { tasks } from './dataInServer';
 import { sel } from './dataInServer';
 import taskListButtonAction from './js/modules/taskListButtonAction';
+import timer from './js/modules/timer';
 
 
  
@@ -15,3 +16,5 @@ import taskListButtonAction from './js/modules/taskListButtonAction';
  taskList(tasks, sel.taskList);
  progressBar(tasks, sel.progressBar);
  taskListButtonAction(tasks, sel.taskListButton, ()=>{ progressBar(tasks, sel.progressBar);});
+
+ timer(sel.timerTextArea, sel.timerStartButton);
