@@ -1,5 +1,5 @@
-function timer(timerTextAreaClass, startTimerButtonClass) {
-  let endtime = plusMinutes(10);
+function timer(taskObj, timerTextAreaClass, startTimerButtonClass) {
+  let endtime;
   let timeInterval;
   let pause = 0;
 
@@ -54,32 +54,31 @@ function timer(timerTextAreaClass, startTimerButtonClass) {
 
   let timerStatus = 'firstStart';
 
-
-
-   startButton.addEventListener('click', () => {
-     if (timerStatus == 'firstStart') {
-       timeInterval = setInterval(() => {
-         updateCloke(endtime);
-       }, 1000);
-       timerStatus = 'pause';
-       startButton.innerHTML = 'Pause';
-     } else if (timerStatus == 'pause') {
-       pause = Date.parse(endtime) - Date.parse(new Date());
-       clearInterval(timeInterval);
-       statusbar;
-       timerStatus = 'start';
-       startButton.innerHTML = 'Start';
-     } else {
-       endtime = new Date(
-         new Date().setMilliseconds(new Date().getMilliseconds() + pause)
-       );
-       timeInterval = setInterval(() => {
-         updateCloke(endtime);
-       }, 1000);
-       timerStatus = 'pause';
-       startButton.innerHTML = 'Pause';
-     }
-   });
+  startButton.addEventListener('click', () => {
+    if (timerStatus == 'firstStart') {
+      endtime = plusMinutes(taskObj.fullTime);
+      timeInterval = setInterval(() => {
+        updateCloke(endtime);
+      }, 1000);
+      timerStatus = 'pause';
+      startButton.innerHTML = 'Pause';
+    } else if (timerStatus == 'pause') {
+      pause = Date.parse(endtime) - Date.parse(new Date());
+      clearInterval(timeInterval);
+      statusbar;
+      timerStatus = 'start';
+      startButton.innerHTML = 'Start';
+    } else {
+      endtime = new Date(
+        new Date().setMilliseconds(new Date().getMilliseconds() + pause)
+      );
+      timeInterval = setInterval(() => {
+        updateCloke(endtime);
+      }, 1000);
+      timerStatus = 'pause';
+      startButton.innerHTML = 'Pause';
+    }
+  });
 }
 
 export default timer;

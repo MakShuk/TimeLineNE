@@ -1,4 +1,4 @@
-function progressBar(taskObj, selectorProgressBar) {
+function progressBar(taskObj, selectorProgressBar, updateFullTimeFun) {
   const initProgressEl = (color, percentage) => {
     return `<div class="progress-bar bg-gradient ${color}" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100" style="width: ${percentage}%;"></div>`;
   };
@@ -39,9 +39,9 @@ function progressBar(taskObj, selectorProgressBar) {
         );
       }
     });
+ 
   };
-
+  updateFullTimeFun();
   initProgressBar(taskObj);
 }
-
 export default progressBar;
