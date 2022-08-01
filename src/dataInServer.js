@@ -10,15 +10,15 @@ let tasks = {
       taskContent: 'Таск 1',
       taskState: 'current',
       taskColor: 'bg-warning',
-      taskTime: 1,
-      taskProgress: true,
+      taskTime: 10,
+      taskProgress: 1,
     },
     {
       taskId: doId(),
       taskContent: 'Таск 2',
       taskState: 'current',
       taskColor: 'bg-info',
-      taskTime: 2,
+      taskTime: 5,
       taskProgress: false,
     },
     {
@@ -26,7 +26,7 @@ let tasks = {
       taskContent: 'Таск 3',
       taskState: 'current',
       taskColor: 'bg-success',
-      taskTime: 3,
+      taskTime: 15,
       taskProgress: false,
     },
     {
@@ -34,7 +34,7 @@ let tasks = {
       taskContent: 'Таск 4',
       taskState: 'current',
       taskColor: 'bg-dark',
-      taskTime: 4,
+      taskTime: 15,
       taskProgress: false,
     },
   ],
@@ -64,8 +64,9 @@ let tasks = {
     });
   },
   setTaskProgress(index) {
-    this.current[index].taskProgress = !this.current[index].taskProgress;
-    this.current[index].taskTime = this.lastNumber
+    this.current[index].taskProgress
+      ? (this.current[index].taskProgress = false)
+      : (this.current[index].taskProgress = this.lastNumber);
     this.lastNumber++
   },
 

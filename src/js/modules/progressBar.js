@@ -29,7 +29,7 @@ function progressBar(taskObj, selectorProgressBar, updateFullTimeFun) {
     setDataEl(selectorProgressBar, '', true);
     let cloneTaskObj = JSON.parse(JSON.stringify(taskObj));
     cloneTaskObj.current.sort((a, b) =>
-      a['taskTime'] > b['taskTime'] ? 1 : -1
+      a['taskProgress'] > b['taskProgress'] ? 1 : -1
     );
     cloneTaskObj.current.forEach((e) => {
       if (e.taskProgress) {
@@ -39,7 +39,6 @@ function progressBar(taskObj, selectorProgressBar, updateFullTimeFun) {
         );
       }
     });
- 
   };
   updateFullTimeFun();
   initProgressBar(taskObj);

@@ -10,10 +10,6 @@ import taskListButtonAction from './js/modules/taskListButtonAction';
 import timer from './js/modules/timer';
 import updateFullTaskTime from './js/modules/updateFullTaskTime'
 
-
- 
-
-
  taskList(tasks, sel.taskList);
  progressBar(tasks, sel.progressBar, ()=>{updateFullTaskTime(tasks, sel.timerTextArea)});
  taskListButtonAction(tasks, sel.taskListButton, ()=>{progressBar(tasks, sel.progressBar, () => {
@@ -21,3 +17,4 @@ import updateFullTaskTime from './js/modules/updateFullTaskTime'
  });});
  timer(tasks, sel.timerTextArea, sel.timerStartButton);
  
+
