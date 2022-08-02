@@ -7,6 +7,7 @@ function updateFullTaskTime(tasksObj, fullTimeCalss) {
         return num;
       }
     };
+    
 
   let fullTime = document.querySelector(fullTimeCalss);
   fullTime.innerHTML = `${getZero(tasksObj.fullTime)} : 00`;

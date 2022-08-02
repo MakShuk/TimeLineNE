@@ -70,7 +70,7 @@ function timer(taskObj, timerTextAreaClass, startTimerButtonClass) {
       startButton.innerHTML = 'Start';
     } else {
       endtime = new Date(
-        new Date().setMilliseconds(new Date().getMilliseconds() + pause)
+        new Date().setMilliseconds(new Date().getMilliseconds() + pause + 600)
       );
       timeInterval = setInterval(() => {
         updateCloke(endtime);

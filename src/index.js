@@ -9,6 +9,7 @@ import { sel } from './dataInServer';
 import taskListButtonAction from './js/modules/taskListButtonAction';
 import timer from './js/modules/timer';
 import updateFullTaskTime from './js/modules/updateFullTaskTime'
+import taskAdd from './js/modules/taskAdd'
 
  taskList(tasks, sel.taskList);
  progressBar(tasks, sel.progressBar, ()=>{updateFullTaskTime(tasks, sel.timerTextArea)});
@@ -16,5 +17,6 @@ import updateFullTaskTime from './js/modules/updateFullTaskTime'
    updateFullTaskTime(tasks, sel.timerTextArea);
  });});
  timer(tasks, sel.timerTextArea, sel.timerStartButton);
+ taskAdd(sel.taskAddTextArea)
  
 

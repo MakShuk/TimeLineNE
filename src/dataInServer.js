@@ -67,26 +67,18 @@ let tasks = {
     this.current[index].taskProgress
       ? (this.current[index].taskProgress = false)
       : (this.current[index].taskProgress = this.lastNumber);
-    this.lastNumber++
+    this.lastNumber++;
   },
-
 };
 
 const sel = {
-  sectionTimeLine: '.m_timeLine',
   progressIndicator: '.m_progressIndicator',
   progressBar: '.m_progressBar',
   taskList: '.m_taskList',
-  colorList: '.m_colorList',
-  timeChoice: '.m_timуСhoice',
-  btnModalAddTask: '.m_btnModalAddTask',
   taskListButton: '.m_taskListButton',
   timerStartButton: '.m_startTimerButton',
   timerTextArea: '.m_timerTextArea',
-  getElbySeclector(key, oneOrAll = 'one') {
-    if (oneOrAll == 'one') return document.querySelector(this[key]);
-    if (oneOrAll == 'all') return document.querySelectorAll(this[key]);
-  },
+  taskAddTextArea: '.m_taskAreaInput',
 };
 
 export { tasks, sel };

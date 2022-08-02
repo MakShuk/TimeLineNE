@@ -1,7 +1,8 @@
 function taskList(taskObj, selectorTaskList) {
-  const initEl = (taskContent, taskColor, taskProgress, taskId) => {
+  const initEl = (taskContent, taskColor, taskProgress, taskId, taskTime) => {
     return `<div class="row py-1 border-bottom">
-             <div class="col-8 text-center">${taskContent}</div>
+            <div class="col-6 text-center">${taskContent}</div>
+            <div class="col-2 text-center">${taskTime} min</div>
             <div class="col-2">action</div>
             <button id="${taskId}" type="button" class="m_taskListButton col-2 btn text-white ${taskColor}">${
       taskProgress ? '-' : '+'
@@ -11,14 +12,17 @@ function taskList(taskObj, selectorTaskList) {
 
   const initList = () => {
     let taskList = document.querySelector(selectorTaskList);
-    taskObj.current.forEach((el) => {
-      taskList.innerHTML += initEl(
-        el.taskContent,
-        el.taskColor,
-        el.taskProgress,
-        el.taskId
-      );
-    });
+    taskObj.current.forEach(
+      ({ taskContent, taskColor, taskProgress, taskId, taskTime}) => {
+        taskList.innerHTML += initEl(
+          taskContent,
+          taskColor,
+          taskProgress,
+          taskId,
+          taskTime
+        );
+      }
+    );
   };
 
   initList();
