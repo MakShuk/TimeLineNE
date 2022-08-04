@@ -82,6 +82,7 @@ const elClass = {
   taskAddButton: '.m_taskAddButton',
   taskAddModalTitle: '.m_taskAddModalTitle',
   taskColorList: '.m_taskColorList',
+  taskAddColors: '.m_taskAddColors',
 };
 
 export { tasks, elClass };

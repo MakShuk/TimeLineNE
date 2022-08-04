@@ -22,7 +22,8 @@ import taskAdd from './js/modules/taskAdd'
    elClass.taskAddTextArea,
    elClass.taskAddButton,
    elClass.taskAddModalTitle,
-   elClass.taskColorList
+   elClass.taskColorList,
+   elClass.taskAddColors
  );
  
 

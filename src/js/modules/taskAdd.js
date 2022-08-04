@@ -3,7 +3,8 @@ function taskAdd(
   taskAddTextAreaClass,
   taskAddButtonClass,
   taskAddModalTitleClass,
-  taskColorListClass
+  taskColorListClass,
+  taskAddColors
 ) {
   const inputEl = document.querySelector(taskAddTextAreaClass);
   const buttonEl = document.querySelector(taskAddButtonClass);
@@ -39,24 +40,38 @@ function taskAdd(
     });
   };
 
-  const initColorListEl = (colorClass) => {
-    return `<div class="m_colors ${colorClass} col-4 m-2"></div>`;
+  const initColorListEl = (colorClass, taskAddColors) => {
+    return `<div  color=${colorClass} class="${taskAddColors.slice(1)}  ${colorClass} col-4 m-2"></div>`;
   };
 
-  const initColotList = (colorObj, taskObj, taskColorListEl) => {
+  const initColotList = (colorObj, taskObj, taskColorListEl, taskAddColors) => {
     let cloneColorObj = JSON.parse(JSON.stringify(colorObj));
     taskObj.current.forEach((el) => {
       cloneColorObj = cloneColorObj.filter((item) => item !== el.taskColor);
     });
-    console.log(cloneColorObj);
     cloneColorObj.forEach((el) => {
-      taskColorListEl.innerHTML += initColorListEl(el);
+      console.log(initColorListEl(el, taskAddColors));
+      taskColorListEl.innerHTML += initColorListEl(el, taskAddColors);
     });
   };
-  
 
-  initColotList(color, taskObj, taskColorList);
+  const delegationToChild = (Selector, event, childElAndSelector, fun) => {
+    let el = document.querySelector(Selector);
+    el.addEventListener(event, (el) => {
+      if (el.target && el.target.matches(childElAndSelector)) {
+        fun(el);
+      }
+    });
+  };
+
+  const test = (e) => {
+    console.log(e.target.getAttribute('color'));
+  };
+
+  delegationToChild(taskColorListClass, 'click', taskAddColors, test);
+  initColotList(color, taskObj, taskColorList, taskAddColors);
   testInput(inputEl, buttonEl, moadalTitleEl);
+  console.log(taskAddColors);
 }
 
 export default taskAdd;
