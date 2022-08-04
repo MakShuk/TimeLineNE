@@ -7,15 +7,15 @@ let tasks = {
   current: [
     {
       taskId: doId(),
-      taskContent: 'Таск 1',
+      taskContent: 'Убрать стол',
       taskState: 'current',
       taskColor: 'bg-warning',
-      taskTime: 10,
+      taskTime: 3,
       taskProgress: 1,
     },
     {
       taskId: doId(),
-      taskContent: 'Таск 2',
+      taskContent: 'Подготовить Немесулид',
       taskState: 'current',
       taskColor: 'bg-info',
       taskTime: 5,
@@ -23,18 +23,18 @@ let tasks = {
     },
     {
       taskId: doId(),
-      taskContent: 'Таск 3',
+      taskContent: 'Помазать ухо',
       taskState: 'current',
       taskColor: 'bg-success',
-      taskTime: 15,
+      taskTime: 2,
       taskProgress: false,
     },
     {
       taskId: doId(),
-      taskContent: 'Таск 4',
+      taskContent: 'Постирать джинсы и кофту',
       taskState: 'current',
       taskColor: 'bg-dark',
-      taskTime: 15,
+      taskTime: 3,
       taskProgress: false,
     },
   ],
@@ -71,7 +71,7 @@ let tasks = {
   },
 };
 
-const sel = {
+const elClass = {
   progressIndicator: '.m_progressIndicator',
   progressBar: '.m_progressBar',
   taskList: '.m_taskList',
@@ -79,6 +79,9 @@ const sel = {
   timerStartButton: '.m_startTimerButton',
   timerTextArea: '.m_timerTextArea',
   taskAddTextArea: '.m_taskAreaInput',
+  taskAddButton: '.m_taskAddButton',
+  taskAddModalTitle: '.m_taskAddModalTitle',
+  taskColorList: '.m_taskColorList',
 };
 
-export { tasks, sel };
+export { tasks, elClass };

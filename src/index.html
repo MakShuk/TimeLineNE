@@ -57,11 +57,11 @@
         <div class="row">
           <div class="col-8 col-sm-10">
             <input type="text" class="m_taskAreaInput form-control" id="formGroupExampleInput" value=""
-              placeholder="Enter the name of the task">
+              placeholder="Short description">
           </div>
           <div class="col-4 col-sm-2">
-            <button type="button" id='btn-open-modal' class="m_taskAddButton btn text-muted col-12 bg-light bg-gradient"
-              data-bs-target="#staticBackdrop" data-bs-toggle="modal" disable>
+            <button type="button"  class="m_taskAddButton btn text-muted col-12 bg-light bg-gradient"
+              data-bs-target="#staticBackdrop" data-bs-toggle="modal" disabled>
               Add
             </button>
           </div>
@@ -93,12 +93,13 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Task</h5>
+          <h5 class="m_taskAddModalTitle modal-title" id="staticBackdropLabel">Task</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="container-fluid">
-            <div class="m_colorList row d-flex justify-content-center border-bottom">
+            <div class="m_taskColorList row justify-content-center border-bottom pb-3">
+                  
             </div>
             <div class="row d-flex justify-content-center ps-5 timeForTaks">
               <div class="m_timуСhoice Сhoiceform-check form-check-inline col-md-3">
