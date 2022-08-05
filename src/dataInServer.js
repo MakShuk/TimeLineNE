@@ -83,6 +83,8 @@ const elClass = {
   taskAddModalTitle: '.m_taskAddModalTitle',
   taskColorList: '.m_taskColorList',
   taskAddColors: '.m_taskAddColors',
+  taskAddModalButton: '.m_taskAddModalButton ',
+  taskTimeCheckInput: '.taskTimeCheckInput',
 };
 
 export { tasks, elClass };
