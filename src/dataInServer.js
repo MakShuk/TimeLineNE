@@ -68,7 +68,19 @@ let tasks = {
       ? (this.current[index].taskProgress = false)
       : (this.current[index].taskProgress = this.lastNumber);
     this.lastNumber++;
-  },
+  }, 
+
+  addTask(content, color, time){
+    let newTask = {
+      taskId: doId(),
+      taskContent: content,
+      taskState: 'current',
+      taskColor: color,
+      taskTime: time,
+      taskProgress: false,
+    };
+    this.current = [...this.current, newTask]
+  }
 };
 
 const elClass = {

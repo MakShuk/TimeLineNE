@@ -1,3 +1,5 @@
+import { tasks } from '../../dataInServer';
+
 function taskAdd(
   taskObj,
   taskAddTextAreaClass,
@@ -6,7 +8,8 @@ function taskAdd(
   taskColorListClass,
   taskAddColors,
   taskAddModalButton,
-  taskTimeCheckInput
+  taskTimeCheckInput,
+  taskListRender
 ) {
   const inputEl = document.querySelector(taskAddTextAreaClass);
   const buttonEl = document.querySelector(taskAddButtonClass);
@@ -50,6 +53,7 @@ function taskAdd(
 
   const initColotList = (colorObj, taskObj, taskColorListEl, taskAddColors) => {
     let cloneColorObj = JSON.parse(JSON.stringify(colorObj));
+    taskColorListEl.innerHTML ='';
     taskObj.current.forEach((el) => {
       cloneColorObj = cloneColorObj.filter((item) => item !== el.taskColor);
     });
@@ -66,8 +70,7 @@ function taskAdd(
   };
 
   const delegationToChild = (Selector, event, childElAndSelector, ...fun) =>
-    // fun1,
-    // fun2
+ 
     {
       let el = document.querySelector(Selector);
       el.addEventListener(event, (el) => {
@@ -103,11 +106,14 @@ function taskAdd(
         togleSelectChek(taskTimeCheckInput) &&
         selectColorValue
       ) {
-        console.log(
-          `Название: ${taskTextContent} время: ${togleSelectChek(
-            taskTimeCheckInput
-          )} цвет: ${selectColorValue}`
+        //addTask(content, color, time){
+        tasks.addTask(
+          taskTextContent,
+          selectColorValue,
+          togleSelectChek(taskTimeCheckInput)
         );
+        taskListRender();
+        taskAddButton.parentNode.firstChild.nextSibling.click();
       }
     });
   };
@@ -121,9 +127,20 @@ function taskAdd(
     },
     selectColor
   );
-  initColotList(color, taskObj, taskColorList, taskAddColors);
+  
+
+
+
+  buttonEl.addEventListener('click', () => {
+     initColotList(color, taskObj, taskColorList, taskAddColors);
+     selectColorValue = false;
+     inputEl.value = ''
+  })
+
+
+  console.log(taskAddButton.parentNode.firstChild.nextSibling.click);
   testInput(inputEl, buttonEl, moadalTitleEl);
-  addTask(taskAddButton)
+  addTask(taskAddButton);
 }
 
 export default taskAdd;

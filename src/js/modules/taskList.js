@@ -12,6 +12,8 @@ function taskList(taskObj, selectorTaskList) {
 
   const initList = () => {
     let taskList = document.querySelector(selectorTaskList);
+    taskList.innerHTML =""
+    console.log(taskObj);
     taskObj.current.forEach(
       ({ taskContent, taskColor, taskProgress, taskId, taskTime}) => {
         taskList.innerHTML += initEl(

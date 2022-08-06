@@ -25,7 +25,8 @@ import taskAdd from './js/modules/taskAdd'
    elClass.taskColorList,
    elClass.taskAddColors,
    elClass.taskAddModalButton,
-   elClass.taskTimeCheckInput
+   elClass.taskTimeCheckInput,
+   () => {taskList(tasks, elClass.taskList)}
  );
  
 
