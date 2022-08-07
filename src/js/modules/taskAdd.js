@@ -46,20 +46,22 @@ function taskAdd(
   };
 
   const initColorListEl = (colorClass, taskAddColors) => {
-    return `<div  color=${colorClass} class="${taskAddColors.slice(
+    return `<div  tabindex="0" color=${colorClass} class="${taskAddColors.slice(
       1
     )}  ${colorClass} col-4 m-2"></div>`;
   };
 
   const initColotList = (colorObj, taskObj, taskColorListEl, taskAddColors) => {
     let cloneColorObj = JSON.parse(JSON.stringify(colorObj));
-    taskColorListEl.innerHTML ='';
+    taskColorListEl.innerHTML = '';
     taskObj.current.forEach((el) => {
       cloneColorObj = cloneColorObj.filter((item) => item !== el.taskColor);
     });
     cloneColorObj.forEach((el) => {
       taskColorListEl.innerHTML += initColorListEl(el, taskAddColors);
     });
+    document.querySelectorAll(taskAddColors).forEach(el => 
+      {el.addEventListener('focus', ()=>{el.click()})});
   };
 
   const resetStyle = (elementsClass, property, valueProperty) => {
@@ -69,16 +71,14 @@ function taskAdd(
     });
   };
 
-  const delegationToChild = (Selector, event, childElAndSelector, ...fun) =>
- 
-    {
-      let el = document.querySelector(Selector);
-      el.addEventListener(event, (el) => {
-        if (el.target && el.target.matches(childElAndSelector)) {
-          fun.forEach((e) => e(el));
-        }
-      });
-    };
+  const delegationToChild = (Selector, event, childElAndSelector, ...fun) => {
+    let el = document.querySelector(Selector);
+    el.addEventListener(event, (e) => {
+      if (e.target && e.target.matches(childElAndSelector)) {
+        fun.forEach((i) => i(e));
+      }
+    });
+  };
 
   const selectColor = (e) => {
     e.target.style.transform = 'scale(1.2)';
@@ -106,11 +106,10 @@ function taskAdd(
         togleSelectChek(taskTimeCheckInput) &&
         selectColorValue
       ) {
-        //addTask(content, color, time){
         tasks.addTask(
           taskTextContent,
           selectColorValue,
-          togleSelectChek(taskTimeCheckInput)
+          +togleSelectChek(taskTimeCheckInput)
         );
         taskListRender();
         taskAddButton.parentNode.firstChild.nextSibling.click();
@@ -127,18 +126,16 @@ function taskAdd(
     },
     selectColor
   );
-  
-
-
 
   buttonEl.addEventListener('click', () => {
-     initColotList(color, taskObj, taskColorList, taskAddColors);
-     selectColorValue = false;
-     inputEl.value = ''
-  })
+    initColotList(color, taskObj, taskColorList, taskAddColors);
+    selectColorValue = false;
+    inputEl.value = '';
+  });
 
 
-  console.log(taskAddButton.parentNode.firstChild.nextSibling.click);
+
+
   testInput(inputEl, buttonEl, moadalTitleEl);
   addTask(taskAddButton);
 }

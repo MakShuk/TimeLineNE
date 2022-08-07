@@ -8,25 +8,47 @@ import { tasks } from './dataInServer';
 import { elClass } from './dataInServer';
 import taskListButtonAction from './js/modules/taskListButtonAction';
 import timer from './js/modules/timer';
-import updateFullTaskTime from './js/modules/updateFullTaskTime'
-import taskAdd from './js/modules/taskAdd'
+import updateFullTaskTime from './js/modules/updateFullTaskTime';
+import taskAdd from './js/modules/taskAdd';
+import removeTask from './js/modules/removeTask'
 
- taskList(tasks, elClass.taskList);
- progressBar(tasks, elClass.progressBar, ()=>{updateFullTaskTime(tasks, elClass.timerTextArea)});
- taskListButtonAction(tasks, elClass.taskListButton, ()=>{progressBar(tasks, elClass.progressBar, () => {
-   updateFullTaskTime(tasks, elClass.timerTextArea);
- });});
- timer(tasks, elClass.timerTextArea, elClass.timerStartButton);
- taskAdd(
-   tasks,
-   elClass.taskAddTextArea,
-   elClass.taskAddButton,
-   elClass.taskAddModalTitle,
-   elClass.taskColorList,
-   elClass.taskAddColors,
-   elClass.taskAddModalButton,
-   elClass.taskTimeCheckInput,
-   () => {taskList(tasks, elClass.taskList)}
- );
- 
+
+
+
+const taskListFn = () => {
+  taskList(tasks, elClass.taskList);
+};
+const progressBarFn = () => {
+  progressBar(tasks, elClass.progressBar, () => {
+    updateFullTaskTime(tasks, elClass.timerTextArea);
+  });
+};
+
+progressBarFn();
+taskListFn();
+taskListButtonAction(
+  tasks,
+  elClass.taskListButton,
+  elClass.taskList,
+  progressBarFn
+);
+timer(tasks, elClass.timerTextArea, elClass.timerStartButton);
+taskAdd(
+  tasks,
+  elClass.taskAddTextArea,
+  elClass.taskAddButton,
+  elClass.taskAddModalTitle,
+  elClass.taskColorList,
+  elClass.taskAddColors,
+  elClass.taskAddModalButton,
+  elClass.taskTimeCheckInput,
+  taskListFn
+);
+removeTask(
+  tasks,
+  elClass.taskList,
+  elClass.taksRemoveButtton,
+  taskListFn,
+  progressBarFn
+);
 
