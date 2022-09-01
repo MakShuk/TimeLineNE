@@ -57,6 +57,7 @@ function timer(taskObj, timerTextAreaClass, startTimerButtonClass) {
   startButton.addEventListener('click', () => {
     if (timerStatus == 'firstStart') {
       endtime = plusMinutes(taskObj.fullTime);
+      play()
       timeInterval = setInterval(() => {
         updateCloke(endtime);
       }, 1000);

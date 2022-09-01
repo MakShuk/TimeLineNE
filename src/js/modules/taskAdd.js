@@ -1,4 +1,3 @@
-import { tasks } from '../../dataInServer';
 
 function taskAdd(
   taskObj,
@@ -9,7 +8,8 @@ function taskAdd(
   taskAddColors,
   taskAddModalButton,
   taskTimeCheckInput,
-  taskListRender
+  taskListRender,
+  save
 ) {
   const inputEl = document.querySelector(taskAddTextAreaClass);
   const buttonEl = document.querySelector(taskAddButtonClass);
@@ -46,9 +46,9 @@ function taskAdd(
   };
 
   const initColorListEl = (colorClass, taskAddColors) => {
-    return `<div  tabindex="0" color=${colorClass} class="${taskAddColors.slice(
+    return `<button  tabindex="0" color=${colorClass} class="${taskAddColors.slice(
       1
-    )}  ${colorClass} col-4 m-2"></div>`;
+    )}  ${colorClass}  btn col-4 m-2"></button>`;
   };
 
   const initColotList = (colorObj, taskObj, taskColorListEl, taskAddColors) => {
@@ -60,8 +60,6 @@ function taskAdd(
     cloneColorObj.forEach((el) => {
       taskColorListEl.innerHTML += initColorListEl(el, taskAddColors);
     });
-    document.querySelectorAll(taskAddColors).forEach(el => 
-      {el.addEventListener('focus', ()=>{el.click()})});
   };
 
   const resetStyle = (elementsClass, property, valueProperty) => {
@@ -106,12 +104,13 @@ function taskAdd(
         togleSelectChek(taskTimeCheckInput) &&
         selectColorValue
       ) {
-        tasks.addTask(
+        taskObj.addTask(
           taskTextContent,
           selectColorValue,
           +togleSelectChek(taskTimeCheckInput)
         );
         taskListRender();
+        save();
         taskAddButton.parentNode.firstChild.nextSibling.click();
       }
     });
@@ -132,9 +131,6 @@ function taskAdd(
     selectColorValue = false;
     inputEl.value = '';
   });
-
-
-
 
   testInput(inputEl, buttonEl, moadalTitleEl);
   addTask(taskAddButton);

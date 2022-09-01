@@ -1,4 +1,11 @@
-function removeTask(tasksObj, taskListClass, taskRemoveClass, taskListFn, progressBarFn) {
+function removeTask(
+  tasksObj,
+  taskListClass,
+  taskRemoveClass,
+  taskListFn,
+  progressBarFn,
+  saveFn
+) {
   const delegationToChild = (Selector, event, childElAndSelector, ...fun) => {
     let el = document.querySelector(Selector);
     el.addEventListener(event, (e) => {
@@ -7,18 +14,16 @@ function removeTask(tasksObj, taskListClass, taskRemoveClass, taskListFn, progre
       }
     });
   };
- 
-const remove  = (e) => {
-   const id = e.target.getAttribute('remove-id');
-   tasksObj.delTask(id);
-   taskListFn()
-   progressBarFn()
-}
 
-delegationToChild(taskListClass, 'click', taskRemoveClass, remove);
+  const remove = (e) => {
+    const id = e.target.getAttribute('remove-id');
+    tasksObj.delTask(id);
+    taskListFn();
+    progressBarFn();
+    saveFn();
+  };
 
-
-
+  delegationToChild(taskListClass, 'click', taskRemoveClass, remove);
 }
 
 export default removeTask;

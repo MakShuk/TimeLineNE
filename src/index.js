@@ -4,16 +4,17 @@ import './sass/main.scss';
 
 import progressBar from './js/modules/progressBar';
 import taskList from './js/modules/taskList';
-import { tasks } from './dataInServer';
 import { elClass } from './dataInServer';
 import taskListButtonAction from './js/modules/taskListButtonAction';
 import timer from './js/modules/timer';
 import updateFullTaskTime from './js/modules/updateFullTaskTime';
 import taskAdd from './js/modules/taskAdd';
 import removeTask from './js/modules/removeTask'
+import { tasks, getSaveData, save } from './js/services/db';
 
 
 
+getSaveData();
 
 const taskListFn = () => {
   taskList(tasks, elClass.taskList);
@@ -42,13 +43,18 @@ taskAdd(
   elClass.taskAddColors,
   elClass.taskAddModalButton,
   elClass.taskTimeCheckInput,
-  taskListFn
+  taskListFn,
+  save
 );
 removeTask(
   tasks,
   elClass.taskList,
   elClass.taksRemoveButtton,
   taskListFn,
-  progressBarFn
+  progressBarFn,
+  save
 );
+
+
+
 
